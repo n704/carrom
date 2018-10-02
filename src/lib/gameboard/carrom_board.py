@@ -35,7 +35,9 @@ class CarromBoard(object):
 
         @returns bool status
         """
-        return self.player1.is_playing() and self.player2.is_playing()
+        if self.black:
+            return True
+        return False
 
     def update_next_player(self):
         self.next_player = self.get_next_player()
@@ -72,6 +74,12 @@ Player {0}: Choose an outcome from the list below
         """
         Return Winner status and final score of the game
         """
+        player1_points = self.player1.get_score()
+        player2_points = self.player2.get_score()
+        player_scored_less_than_5 = (player1_points < 5 and player2_points < 5)
+        player_lead_less_than_3 = (abs(player1_points - player2_points) < 3)
+        if player_scored_less_than_5 or player_lead_less_than_3:
+            return "Game is Draw"
         if self.player1.is_winner():
             return "Player 1 won the game. Final Score: {0}-{1}".format(
                 self.player1.get_score(), self.player2.get_score()

@@ -22,4 +22,5 @@ class Game(object):
             self.carrom_board.update_next_player()
             self.carrom_board.next_player_make_move()
             self.carrom_board.check_board_status()
+            print self
         print self.carrom_board.get_winner()

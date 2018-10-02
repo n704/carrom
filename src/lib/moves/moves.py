@@ -4,11 +4,12 @@ from .red_strike import RedStrike
 from .striker_strike import StrikerMove
 from .defunt_move import DefunMove
 
+
 def getMove(move):
     if move == 1:
         return StrikeMove()
     elif move == 2:
-        return Multistrike()
+        return MultiStrike()
     elif move == 3:
         return RedStrike()
     elif move == 4:
